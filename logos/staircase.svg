@@ -1,9 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 200">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 200">
   <path d="M100 12c52 -8 92 30 94 84c2 56 -38 94 -92 92C48 186 10 150 10 100C10 54 48 20 100 12Z" fill="#5658EE"/>
   <g fill="#ffffff">
     <rect x="88" y="52" width="54" height="17" rx="8" transform="rotate(-8 115 60)"/>
     <rect x="66" y="88" width="66" height="18" rx="8" transform="rotate(-6 99 97)"/>
     <rect x="42" y="126" width="80" height="19" rx="8" transform="rotate(-7 82 135)"/>
   </g>
-  <text x="215" y="143" textLength="580" lengthAdjust="spacingAndGlyphs" font-family="Nunito, Quicksand, Inter, system-ui, sans-serif" font-size="112" font-weight="800" fill="#23232E" letter-spacing="-2">staircase</text>
+  <text x="215" y="143" font-family="Nunito, Quicksand, Inter, system-ui, sans-serif" font-size="100" font-weight="800" fill="#23232E" letter-spacing="-2">staircase</text>
 </svg>
