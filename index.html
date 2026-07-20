@@ -139,6 +139,16 @@
 
 
   /* faq */
+
+  .faq-tuck{padding:0 0 48px}
+  .faq-outer>summary{cursor:pointer;list-style:none;font-size:13px;font-weight:500;color:var(--muted);padding:10px 0;font-family:'Inter'}
+  .faq-outer>summary::-webkit-details-marker{display:none}
+  .faq-outer>summary:hover{color:var(--ink)}
+  .faq-outer[open]>summary{color:var(--ink)}
+  .team-points{margin-top:20px;list-style:none;padding:0;max-width:680px}
+  .team-points li{font-size:16px;color:var(--muted);padding:4px 0 4px 22px;position:relative}
+  .team-points li:before{content:"—";position:absolute;left:0;color:var(--accent)}
+
   .faq{background:var(--paper-2)}
   .faq-list{margin-top:44px;max-width:820px;border-top:1px solid var(--line)}
   .faq-list details{border-bottom:1px solid var(--line)}
@@ -192,7 +202,6 @@
       <a href="#products">Products</a>
       <a href="#platform">Platform</a>
       <a href="#team">Team</a>
-      <a href="#faq">FAQ</a>
     </div>
     <a class="btn" href="mailto:hello@staplerstudios.ai">Book a discovery call</a>
   </div>
@@ -225,6 +234,9 @@
   <div class="wrap">
     <div class="eyebrow">Team</div>
     <h2 class="section-title">Operators who've run the workflows we modernize.</h2>
+    <ul class="team-points">
+      <li>Founded by Dane Tomalin, bringing extensive software as a service experience across product, go-to-market, and customer success leadership.</li>
+    </ul>
   </div>
   <div class="marquee-label">Our team has built at</div>
   <div class="marquee">
@@ -313,27 +325,27 @@
   <div class="wrap">
     <div class="eyebrow">The platform underneath</div>
     <h2 class="section-title">Agents that work. Costs you can see. Trust you can tune.</h2>
-    <p class="section-sub">Every deployment runs on the studio’s own platform — the same system we run ourselves, in production, every day.</p>
+    <p class="section-sub">Every deployment runs on the studio’s own platform, the same system we run ourselves, in production, every day.</p>
     <div class="plat-grid">
       <div class="plat">
         <h3>An agent workforce</h3>
-        <p>Purpose-built agents for health scoring, QBRs, renewal briefs, meeting prep, weekly digests, onboarding handoffs — each producing work your team reviews, not raw model output.</p>
+        <p>Purpose-built agents for health scoring, QBRs, renewal briefs, meeting prep, weekly digests, onboarding handoffs, each producing work your team reviews, not raw model output.</p>
       </div>
       <div class="plat">
         <h3>Trust-tier governance</h3>
-        <p>Three tiers — autonomous, fast-track, and requires-approval — set per workflow. Agents earn autonomy; customer-facing actions always route through people.</p>
+        <p>Three tiers: autonomous, fast-track, and requires-approval, set per workflow. Agents earn autonomy; customer-facing actions always route through people.</p>
       </div>
       <div class="plat">
         <h3>A visible cost ledger</h3>
-        <p>Every agent run is metered: model, tokens, dollars. You see exactly what the AI layer costs to operate — typically a few hundred dollars a month, not a headcount.</p>
+        <p>Every agent run is metered: model, tokens, dollars. You see exactly what the AI layer costs to operate, typically a few hundred dollars a month, not a headcount.</p>
       </div>
       <div class="plat">
         <h3>Confirmed-KPI thread</h3>
-        <p>Success criteria confirmed with your customer at kickoff flow through every artifact — QBRs, health checks, value reviews — with provenance attached.</p>
+        <p>Success criteria confirmed with your customer at kickoff flow through every artifact, including QBRs, health checks, and value reviews, with provenance attached.</p>
       </div>
       <div class="plat">
         <h3>Your stack, connected</h3>
-        <p>CRM, product analytics, support, billing, calendar, and inbox — unified into one customer record the agents reason over.</p>
+        <p>CRM, product analytics, support, billing, calendar, and inbox, unified into one customer record the agents reason over.</p>
       </div>
       <div class="plat">
         <h3>A feedback loop that compounds</h3>
@@ -347,11 +359,22 @@
 <hr class="rule">
 
 
-<section class="faq" id="faq">
+
+<section class="contact" id="contact">
   <div class="wrap">
-    <div class="eyebrow">FAQ</div>
-    <h2 class="section-title">Direct answers to the questions we hear most.</h2>
-    <div class="faq-list">
+    <div class="eyebrow">Discovery call</div>
+    <h2>See what your post-sales operation<br>looks like modernized.</h2>
+    <p>Thirty minutes. We'll tell you honestly whether there's a fit. If there is, the audit will prove it.</p>
+    <a class="btn" href="mailto:hello@staplerstudios.ai">hello@staplerstudios.ai</a>
+  </div>
+</section>
+
+
+<section class="faq-tuck" id="faq">
+  <div class="wrap">
+    <details class="faq-outer">
+      <summary>Frequently asked questions</summary>
+      <div class="faq-list">
       <details>
         <summary>What is Stapler Studios?</summary>
         <div class="answer">Stapler Studios is an AI product studio that builds personalized software and modernizes workflows for B2B companies, with a focus on post-sales operations: customer success, onboarding, support, and product marketing. Products are built and proven in the studio, then deployed inside client operations and run jointly with client teams.</div>
@@ -366,7 +389,7 @@
       </details>
       <details>
         <summary>How is this different from buying a customer success platform like Gainsight or Planhat?</summary>
-        <div class="answer">A customer success platform gives your team a dashboard your people must feed and operate. Stapler Studios deploys a system shaped to your workflows in which AI agents do the operating — health scoring, forecasting, reporting, and meeting preparation, with your team approving the output. It typically replaces the platform license, the implementation project, and the administrative headcount required to run it.</div>
+        <div class="answer">A customer success platform gives your team a dashboard your people must feed and operate. Stapler Studios deploys a system shaped to your workflows in which AI agents do the operating, health scoring, forecasting, reporting, and meeting preparation, with your team approving the output. It typically replaces the platform license, the implementation project, and the administrative headcount required to run it.</div>
       </details>
       <details>
         <summary>How long does a deployment take?</summary>
@@ -385,15 +408,7 @@
         <div class="answer">Engagements are priced against the systems and costs they replace, typically a platform license, its implementation, and the administration required to operate it, rather than billed hourly. The AI Readiness Audit establishes scope and a sequenced roadmap before any build investment is made.</div>
       </details>
     </div>
-  </div>
-</section>
-
-<section class="contact" id="contact">
-  <div class="wrap">
-    <div class="eyebrow">Discovery call</div>
-    <h2>See what your post-sales operation<br>looks like modernized.</h2>
-    <p>Thirty minutes. We'll tell you honestly whether there's a fit. If there is, the audit will prove it.</p>
-    <a class="btn" href="mailto:hello@staplerstudios.ai">hello@staplerstudios.ai</a>
+    </details>
   </div>
 </section>
 
