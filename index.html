@@ -165,6 +165,21 @@
   .marquee{max-width:860px;margin:0 auto}
   .teamband .team-grid{margin-top:40px;margin-bottom:56px}
 
+
+  /* product carousel */
+  .prod-carousel{position:relative;max-width:720px;margin:48px auto 0}
+  .prod-track{display:flex;transition:transform .45s ease;overflow:visible}
+  .prod-carousel .viewport{overflow:hidden}
+  .prod-carousel{overflow:hidden;padding-bottom:8px}
+  .prod-track .product{flex:0 0 100%;min-width:100%}
+  .car-btn{position:absolute;top:42%;width:42px;height:42px;border-radius:50%;background:#fff;border:1px solid var(--line);color:var(--ink);font-size:22px;cursor:pointer;z-index:5;line-height:1}
+  .car-btn:hover{border-color:var(--accent);color:var(--accent)}
+  .car-btn.prev{left:10px}
+  .car-btn.next{right:10px}
+  .car-dots{display:flex;gap:8px;justify-content:center;margin-top:18px}
+  .car-dots button{width:9px;height:9px;border-radius:50%;border:none;background:var(--line);cursor:pointer;padding:0}
+  .car-dots button.active{background:var(--accent)}
+
   /* logo marquee */
   .marquee-section{padding:0;background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
   .marquee-label{text-align:center;font-size:11.5px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);padding:26px 0 4px}
@@ -321,27 +336,36 @@
     <div class="eyebrow">Products</div>
     <h2 class="section-title">Real tools, built with the teams who run on them.</h2>
     <p class="section-sub">Working products, built to operate customer workflows in production. We build alongside our customers and shape each product to the way their teams actually work, and every deployment makes it sharper for the next.</p>
-    <div class="product-cards">
-      <div class="product">
+    <div class="prod-carousel">
+      <div class="prod-track" id="prodTrack">
+        <div class="product">
         <span class="born-tag">Product</span>
         <h3>CS Health</h3>
         <div class="role">The engine behind Health &amp; Lifecycle and Onboarding deployments</div>
         <p>A complete customer-health operating system built to run the customer lifecycle: Value–Adoption–Relationship health scoring, renewal forecasting, an onboarding command center with go-live tracking, an agentic CSM workspace for the Monday-morning flow, and one-click QBR and report generation, all wired to a confirmed-KPI thread from kickoff to renewal.</p>
         <div class="product-thumb"><img src="products/cs-health.svg" alt="CS Health product view" loading="lazy"></div>
       </div>
-      <div class="product">
+        <div class="product">
         <span class="born-tag">Product</span>
         <h3>Command Center</h3>
         <div class="role">The operating layer every deployment ships with</div>
         <p>The orchestration layer for an agent workforce: staged pipelines with manual advance, trust-tier governance, approval queues with full artifact review, and a per-run cost ledger that shows exactly what every agent action costs by model, tokens, and dollars.</p>
         <div class="product-thumb"><img src="products/command-center.svg" alt="Command Center product view" loading="lazy"></div>
       </div>
-      <div class="product wide">
+        <div class="product">
         <span class="born-tag">Product</span>
         <h3>GTM Intelligence</h3>
         <div class="role">Product marketing, run as a system</div>
         <p>A product-marketing intelligence engine: competitive dossiers and battlecards, market signal monitoring with impact scoring, positioning frameworks, messaging libraries, and channel-ready campaign briefs. Thirty-plus production workflows that take a brand from research to distribution-ready messaging, with a feedback loop that turns every correction into an operating rule.</p>
         <div class="product-thumb"><img src="products/gtm-intelligence.svg" alt="GTM Intelligence product view" loading="lazy"></div>
+      </div>
+      </div>
+      <button class="car-btn prev" aria-label="Previous product" onclick="prodGo(-1)">&#8249;</button>
+      <button class="car-btn next" aria-label="Next product" onclick="prodGo(1)">&#8250;</button>
+      <div class="car-dots" id="prodDots">
+        <button aria-label="CS Health" onclick="prodSet(0)"></button>
+        <button aria-label="Command Center" onclick="prodSet(1)"></button>
+        <button aria-label="GTM Intelligence" onclick="prodSet(2)"></button>
       </div>
     </div>
   </div>
@@ -455,6 +479,18 @@
     setTimeout(() => { el.textContent = words[wi]; el.style.opacity = 1; }, 320);
   }, 3400);
   el.style.transition = "opacity .32s";
+
+  let prodI = 0;
+  const prodTrack = document.getElementById('prodTrack');
+  const prodDots = document.getElementById('prodDots').children;
+  function prodRender(){
+    prodTrack.style.transform = 'translateX(' + (-100 * prodI) + '%)';
+    for (let i = 0; i < prodDots.length; i++) prodDots[i].classList.toggle('active', i === prodI);
+  }
+  function prodSet(i){ prodI = i; prodRender(); }
+  function prodGo(d){ prodI = (prodI + d + 3) % 3; prodRender(); }
+  prodRender();
+
 
   document.querySelectorAll('.logo-slot img').forEach(img => {
     img.addEventListener('error', () => {
