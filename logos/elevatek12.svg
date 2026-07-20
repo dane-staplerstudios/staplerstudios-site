@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 210">
+  <text x="110" y="52" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="34" font-weight="500" fill="#4B4A47" letter-spacing="6">ELEVATE</text>
+  <rect x="18" y="68" width="184" height="120" fill="#3CB964"/>
+  <g stroke="#ffffff" stroke-width="2" opacity="0.45">
+    <line x1="150" y1="188" x2="202" y2="140"/>
+    <line x1="168" y1="188" x2="202" y2="168"/>
+    <line x1="140" y1="188" x2="202" y2="112"/>
+    <circle cx="176" cy="156" r="3" fill="#fff" stroke="none"/>
+    <circle cx="192" cy="176" r="3" fill="#fff" stroke="none"/>
+  </g>
+  <text x="106" y="158" text-anchor="middle" font-family="Nunito, Quicksand, Inter, system-ui, sans-serif" font-size="72" font-weight="800" fill="#ffffff">K-12</text>
+</svg>
