@@ -175,20 +175,6 @@
   .teamband .team-grid{margin-top:40px;margin-bottom:56px}
 
 
-  /* product carousel */
-  .prod-carousel{position:relative;max-width:720px;margin:48px auto 0}
-  .prod-track{display:flex;transition:transform .45s ease;overflow:visible}
-  .prod-carousel .viewport{overflow:hidden}
-  .prod-carousel{overflow:hidden;padding-bottom:8px}
-  .prod-track .product{flex:0 0 100%;min-width:100%}
-  .car-btn{position:absolute;top:42%;width:42px;height:42px;border-radius:50%;background:#fff;border:1px solid var(--line);color:var(--ink);font-size:22px;cursor:pointer;z-index:5;line-height:1}
-  .car-btn:hover{border-color:var(--accent);color:var(--accent)}
-  .car-btn.prev{left:10px}
-  .car-btn.next{right:10px}
-  .car-dots{display:flex;gap:8px;justify-content:center;margin-top:18px}
-  .car-dots button{width:9px;height:9px;border-radius:50%;border:none;background:var(--line);cursor:pointer;padding:0}
-  .car-dots button.active{background:var(--accent)}
-
   /* logo marquee */
   .marquee-section{padding:0;background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
   .marquee-label{text-align:center;font-size:11.5px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);padding:26px 0 4px}
@@ -203,6 +189,20 @@
   .logo-slot img[alt=ElevateK12],.logo-slot img[alt=StaircaseAI],.logo-slot img[alt=Kantar]{height:34px}
   .wordmark{font-family:'Newsreader',serif;font-size:22px;font-weight:500;color:var(--muted);white-space:nowrap;opacity:.8}
   @keyframes mq{to{transform:translateX(-50%)}}
+
+  /* focus areas */
+  .focus-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px;align-items:stretch}
+  .focus-card{border:1px solid var(--line);background:#fff;border-radius:4px;display:flex;flex-direction:column;overflow:hidden;text-align:center}
+  .focus-body{padding:32px 26px 26px;flex:1;display:flex;flex-direction:column}
+  .focus-card h3{font-size:23px}
+  .fc-copy{font-size:14.5px;color:var(--muted);margin-top:12px;flex:1}
+  .focus-prod{margin-top:20px;padding-top:18px;border-top:1px solid var(--line)}
+  .fp-label{display:block;font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent)}
+  .fp-name{display:block;font-family:'Newsreader',serif;font-size:20px;font-weight:500;margin-top:6px}
+  .fp-role{display:block;font-size:13px;color:var(--muted);margin-top:6px}
+  .focus-thumb{border-top:1px solid var(--line);background:var(--paper-2)}
+  .focus-thumb img{display:block;width:100%;height:auto}
+  @media(max-width:900px){.focus-grid{grid-template-columns:1fr}}
 
   /* born in the studio */
   .born{background:var(--paper)}
@@ -277,7 +277,7 @@
     <a class="logo" href="#top">stapler<em>studios</em></a>
     <div class="nav-links">
       <a href="#method">Method</a>
-      <a href="#products">Products</a>
+      <a href="#products">Focus areas</a>
       <a href="#platform">Platform</a>
       <a href="#team">Team</a>
     </div>
@@ -291,7 +291,7 @@
     <p class="sub">We ship working systems in production, not decks.</p>
     <div class="cta-row">
       <a class="btn" href="mailto:Hello@staplerstudios.ai">Book a discovery call</a>
-      <a class="btn ghost" href="#products">See our products</a>
+      <a class="btn ghost" href="#products">See our focus areas</a>
     </div>
     <div class="thread"></div>
   </div>
@@ -369,40 +369,50 @@
 
 <section class="born" id="products">
   <div class="wrap">
-    <div class="eyebrow">Products</div>
-    <h2 class="section-title">Real tools, built with the teams who run on them.</h2>
-    <p class="section-sub">Working products, built to operate customer workflows in production. We build alongside our customers and shape each product to the way their teams actually work, and every deployment makes it sharper for the next.</p>
-    <div class="prod-carousel">
-      <div class="prod-track" id="prodTrack">
-        <div class="product">
-        <span class="born-tag">Product</span>
-        <h3>CS Health</h3>
-        <div class="role">The engine behind Health &amp; Lifecycle and Onboarding deployments</div>
-        <p>A complete customer-health operating system built to run the customer lifecycle: Value–Adoption–Relationship health scoring, renewal forecasting, an onboarding command center with go-live tracking, an agentic CSM workspace for the Monday-morning flow, and one-click QBR and report generation, all wired to a confirmed-KPI thread from kickoff to renewal.</p>
-        <div class="product-thumb"><img src="products/cs-health.svg" alt="CS Health product view" loading="lazy"></div>
+    <div class="eyebrow">Focus areas</div>
+    <h2 class="section-title">Three areas. Each anchored by a product in production.</h2>
+    <p class="section-sub">We go deep where we have already built and shipped. Every focus area is anchored by a product born in the studio, proven with customers, and shaped to each team we deploy it with.</p>
+    <div class="focus-grid">
+
+      <div class="focus-card">
+        <div class="focus-body">
+          <h3>Customer Success</h3>
+          <p class="fc-copy">Health scoring, renewal forecasting, onboarding, QBRs, and the Monday morning workflow, run by agents with your team approving the output.</p>
+          <div class="focus-prod">
+            <span class="fp-label">Born in the studio</span>
+            <span class="fp-name">CS Health</span>
+            <span class="fp-role">A complete customer health operating system, from confirmed KPIs at kickoff to renewal.</span>
+          </div>
+        </div>
+        <div class="focus-thumb"><img src="products/cs-health.svg" alt="CS Health product view" loading="lazy"></div>
       </div>
-        <div class="product">
-        <span class="born-tag">Product</span>
-        <h3>Command Center</h3>
-        <div class="role">The operating layer every deployment ships with</div>
-        <p>The orchestration layer for an agent workforce: staged pipelines with manual advance, trust-tier governance, approval queues with full artifact review, and a per-run cost ledger that shows exactly what every agent action costs by model, tokens, and dollars.</p>
-        <div class="product-thumb"><img src="products/command-center.svg" alt="Command Center product view" loading="lazy"></div>
+
+      <div class="focus-card">
+        <div class="focus-body">
+          <h3>Product Marketing</h3>
+          <p class="fc-copy">Competitive intelligence, positioning, messaging, and campaign briefs produced continuously as a system instead of in quarterly sprints.</p>
+          <div class="focus-prod">
+            <span class="fp-label">Born in the studio</span>
+            <span class="fp-name">GTM Intelligence</span>
+            <span class="fp-role">Thirty-plus production workflows from research to distribution-ready messaging.</span>
+          </div>
+        </div>
+        <div class="focus-thumb"><img src="products/gtm-intelligence.svg" alt="GTM Intelligence product view" loading="lazy"></div>
       </div>
-        <div class="product">
-        <span class="born-tag">Product</span>
-        <h3>GTM Intelligence</h3>
-        <div class="role">Product marketing, run as a system</div>
-        <p>A product-marketing intelligence engine: competitive dossiers and battlecards, market signal monitoring with impact scoring, positioning frameworks, messaging libraries, and channel-ready campaign briefs. Thirty-plus production workflows that take a brand from research to distribution-ready messaging, with a feedback loop that turns every correction into an operating rule.</p>
-        <div class="product-thumb"><img src="products/gtm-intelligence.svg" alt="GTM Intelligence product view" loading="lazy"></div>
+
+      <div class="focus-card">
+        <div class="focus-body">
+          <h3>Agent Operations</h3>
+          <p class="fc-copy">The operating layer that keeps an agent workforce trustworthy: staged pipelines, approval queues, and full cost visibility on every action.</p>
+          <div class="focus-prod">
+            <span class="fp-label">Born in the studio</span>
+            <span class="fp-name">Command Center</span>
+            <span class="fp-role">The orchestration layer every deployment ships with.</span>
+          </div>
+        </div>
+        <div class="focus-thumb"><img src="products/command-center.svg" alt="Command Center product view" loading="lazy"></div>
       </div>
-      </div>
-      <button class="car-btn prev" aria-label="Previous product" onclick="prodGo(-1)">&#8249;</button>
-      <button class="car-btn next" aria-label="Next product" onclick="prodGo(1)">&#8250;</button>
-      <div class="car-dots" id="prodDots">
-        <button aria-label="CS Health" onclick="prodSet(0)"></button>
-        <button aria-label="Command Center" onclick="prodSet(1)"></button>
-        <button aria-label="GTM Intelligence" onclick="prodSet(2)"></button>
-      </div>
+
     </div>
   </div>
 </section>
@@ -505,16 +515,7 @@
   }, 3400);
   el.style.transition = "opacity .32s";
 
-  let prodI = 0;
-  const prodTrack = document.getElementById('prodTrack');
-  const prodDots = document.getElementById('prodDots').children;
-  function prodRender(){
-    prodTrack.style.transform = 'translateX(' + (-100 * prodI) + '%)';
-    for (let i = 0; i < prodDots.length; i++) prodDots[i].classList.toggle('active', i === prodI);
-  }
-  function prodSet(i){ prodI = i; prodRender(); }
-  function prodGo(d){ prodI = (prodI + d + 3) % 3; prodRender(); }
-  prodRender();
+
 
 
   document.querySelectorAll('.logo-slot img').forEach(img => {
