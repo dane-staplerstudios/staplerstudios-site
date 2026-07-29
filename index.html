@@ -68,16 +68,17 @@
 
   /* Motion control. One switch pauses both the rotating headline and
      the logo marquee, which is the mechanism WCAG 2.2.2 asks for. */
-  /* The control is always in the DOM and always operable. It is only
-     visually hidden, and it reveals itself on hover of the hero or on
-     keyboard focus, so it costs nothing visually while remaining a
-     genuine mechanism for 2.2.2. Never display:none, which would
-     remove it from the accessibility tree and the tab order. */
-  .motion-toggle{display:inline-flex;align-items:center;gap:7px;margin-top:22px;background:none;border:1px solid var(--line);color:var(--muted);font-family:'Inter';font-size:12px;padding:6px 12px;border-radius:999px;cursor:pointer;opacity:0;transform:translateY(-4px);transition:opacity .18s ease-in-out,transform .18s ease-in-out,color .15s,border-color .15s}
-  .hero:hover .motion-toggle,.motion-toggle:hover,.motion-toggle:focus-visible{opacity:1;transform:none}
-  .motion-toggle:hover{color:var(--ink);border-color:var(--muted)}
-  /* Once paused it stays visible, otherwise there is no way back. */
-  body.motion-paused .motion-toggle{opacity:1;transform:none}
+  /* The control reads as white on the near-white page, so it is
+     invisible at rest without ever leaving the DOM, the tab order or
+     the accessibility tree. display:none would remove the mechanism
+     2.2.2 asks for and put the Level A failure back.
+     It resolves to full contrast on hover and on keyboard focus, which
+     is the moment anyone actually needs to see it. */
+  .motion-toggle{display:inline-flex;align-items:center;gap:7px;margin-top:22px;background:none;border:1px solid transparent;color:#fff;font-family:'Inter';font-size:12px;padding:6px 12px;border-radius:999px;cursor:pointer;transition:color .15s ease-in-out,border-color .15s ease-in-out}
+  .motion-toggle:hover,.motion-toggle:focus-visible{color:var(--ink);border-color:var(--muted)}
+  /* Once paused it stays legible, otherwise there is no way to resume. */
+  body.motion-paused .motion-toggle{color:var(--muted);border-color:var(--line)}
+  body.motion-paused .motion-toggle:hover{color:var(--ink);border-color:var(--muted)}
   body.motion-paused .marquee-track{animation-play-state:paused}
   .marquee-track:hover,.marquee-track:focus-within{animation-play-state:paused}
 
@@ -612,6 +613,21 @@
 
   toggle.addEventListener("click", () => {
     setPaused(toggle.getAttribute("aria-pressed") !== "true");
+  });
+
+  // Hovering the control pauses while the pointer rests there. This is
+  // a convenience for mouse users and nothing more: hover cannot be
+  // performed with a keyboard, so the click toggle above remains the
+  // mechanism that actually satisfies 2.2.2.
+  toggle.addEventListener("mouseenter", () => {
+    if (toggle.getAttribute("aria-pressed") === "true") return;
+    document.body.classList.add("motion-paused");
+    stopRotation();
+  });
+  toggle.addEventListener("mouseleave", () => {
+    if (toggle.getAttribute("aria-pressed") === "true") return;
+    document.body.classList.remove("motion-paused");
+    startRotation();
   });
 
   // Follow the OS setting on load and if it changes mid-session.
