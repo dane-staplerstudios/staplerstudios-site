@@ -68,8 +68,16 @@
 
   /* Motion control. One switch pauses both the rotating headline and
      the logo marquee, which is the mechanism WCAG 2.2.2 asks for. */
-  .motion-toggle{display:inline-flex;align-items:center;gap:7px;margin-top:22px;background:none;border:1px solid var(--line);color:var(--muted);font-family:'Inter';font-size:12px;padding:6px 12px;border-radius:999px;cursor:pointer;transition:color .15s,border-color .15s}
+  /* The control is always in the DOM and always operable. It is only
+     visually hidden, and it reveals itself on hover of the hero or on
+     keyboard focus, so it costs nothing visually while remaining a
+     genuine mechanism for 2.2.2. Never display:none, which would
+     remove it from the accessibility tree and the tab order. */
+  .motion-toggle{display:inline-flex;align-items:center;gap:7px;margin-top:22px;background:none;border:1px solid var(--line);color:var(--muted);font-family:'Inter';font-size:12px;padding:6px 12px;border-radius:999px;cursor:pointer;opacity:0;transform:translateY(-4px);transition:opacity .18s ease-in-out,transform .18s ease-in-out,color .15s,border-color .15s}
+  .hero:hover .motion-toggle,.motion-toggle:hover,.motion-toggle:focus-visible{opacity:1;transform:none}
   .motion-toggle:hover{color:var(--ink);border-color:var(--muted)}
+  /* Once paused it stays visible, otherwise there is no way back. */
+  body.motion-paused .motion-toggle{opacity:1;transform:none}
   body.motion-paused .marquee-track{animation-play-state:paused}
   .marquee-track:hover,.marquee-track:focus-within{animation-play-state:paused}
 
