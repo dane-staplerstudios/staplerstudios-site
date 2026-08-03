@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CK Worldwide Correspondence Analysis | Stapler Studios</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#122a3a;
+  --accent:#0e7c86;
+  --accent-dark:#0a5f67;
+  --muted:#5d6f7b;
+  --line:#dbe4e8;
+  --paper:#f8fafb;
+  --max:1120px;
+  --s1:#0e7c86;
+  --s2:#c1571f;
+  --s3:#4a3aa7;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:'Inter',system-ui,sans-serif;font-size:16px;line-height:1.6;
+  -webkit-font-smoothing:antialiased}
+
+a{color:var(--accent-dark)}
+:focus-visible{outline:2px solid var(--accent-dark);outline-offset:2px}
+
+.skip{position:absolute;left:-9999px;top:0;background:#fff;color:var(--ink);
+  padding:12px 18px;border-radius:12px;z-index:100;font-weight:600}
+.skip:focus{left:16px;top:16px}
+
+.band{background:var(--ink);color:#fff}
+.inner{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+header.band .inner{padding-top:34px;padding-bottom:34px}
+.wordmark{font-weight:700;letter-spacing:.18em;font-size:13px;color:#fff;margin:0 0 22px}
+h1{font-size:34px;line-height:1.22;margin:0 0 10px;font-weight:700;letter-spacing:-.01em}
+.dek{margin:0;color:#c7d6de;font-size:17px;max-width:60ch}
+.facts{margin:22px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:8px 32px;
+  font-size:13.5px;color:#c7d6de}
+.confid{margin:18px 0 0;font-size:13px;color:#9fb4bf}
+
+main{padding:44px 0 20px}
+section{margin-bottom:44px}
+.eyebrow{font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;
+  color:var(--accent-dark);margin:0 0 10px}
+h2{font-size:25px;line-height:1.28;margin:0 0 12px;font-weight:700;letter-spacing:-.01em}
+h3{font-size:17.5px;margin:0 0 8px;font-weight:600}
+p{margin:0 0 14px;max-width:74ch}
+.lede{font-size:18px;color:var(--ink);max-width:70ch}
+.muted{color:var(--muted)}
+
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px 28px;margin-bottom:20px}
+.card.lg{border-radius:24px}
+.card h3{margin-top:0}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:880px){.grid2{grid-template-columns:1fr}}
+
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(196px,1fr));gap:14px;margin-bottom:26px}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px 22px}
+.kpi .lbl{font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--accent-dark)}
+.kpi .val{font-size:38px;font-weight:700;line-height:1.12;margin-top:8px;letter-spacing:-.02em}
+.kpi .note{font-size:13.5px;color:var(--muted);margin-top:4px;line-height:1.45}
+
+table{border-collapse:collapse;width:100%;font-size:14px;background:#fff}
+caption{caption-side:top;text-align:left;font-size:13px;color:var(--muted);padding:0 0 10px}
+th,td{padding:11px 14px;text-align:right;border-bottom:1px solid var(--line)}
+th:first-child,td:first-child{text-align:left}
+thead th{background:var(--ink);color:#fff;font-weight:600;font-size:13px;border-bottom:none}
+thead th:first-child{border-top-left-radius:8px}
+thead th:last-child{border-top-right-radius:8px}
+tbody td{font-variant-numeric:tabular-nums}
+tbody td:first-child{font-variant-numeric:normal}
+
+details{margin-top:14px;border-top:1px solid var(--line);padding-top:12px}
+summary{cursor:pointer;font-size:13.5px;font-weight:600;color:var(--accent-dark);
+  list-style:none;display:inline-flex;align-items:center;gap:7px;padding:4px 2px}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"";width:0;height:0;border-left:6px solid var(--accent-dark);
+  border-top:4.5px solid transparent;border-bottom:4.5px solid transparent;transition:transform .15s}
+@media (prefers-reduced-motion: reduce){summary::before{transition:none}}
+details[open] summary::before{transform:rotate(90deg)}
+details table{margin-top:12px}
+
+figure{margin:0}
+figcaption{font-size:13.5px;color:var(--muted);margin-bottom:16px;max-width:74ch}
+svg{display:block;width:100%;height:auto;overflow:visible}
+.tick{font-size:11.5px;fill:var(--muted)}
+.vlabel{font-size:12px;fill:var(--ink);font-variant-numeric:tabular-nums}
+.slabel{font-size:12px;font-weight:600;font-variant-numeric:tabular-nums}
+.gl{stroke:var(--line);stroke-width:1}
+.ax{stroke:#b9c8d0;stroke-width:1}
+
+.legend{display:flex;gap:10px 22px;flex-wrap:wrap;margin:0 0 16px;font-size:13.5px;color:var(--ink)}
+.legend span{display:inline-flex;align-items:center;gap:7px}
+.legend i{width:12px;height:12px;border-radius:4px;display:inline-block;flex:none}
+
+.quote{margin:14px 0;padding:16px 20px;background:var(--paper);border:1px solid var(--line);
+  border-left:4px solid var(--accent);border-radius:4px;color:var(--ink);font-size:15px}
+.quote p{margin:0;max-width:none}
+.quote .src{display:block;margin-top:8px;font-size:12.5px;color:var(--accent-dark);font-weight:600}
+
+ul.rec{margin:0;padding-left:22px}
+ul.rec li{margin-bottom:12px;max-width:74ch}
+ul.rec b{font-weight:600}
+
+.chip{display:inline-block;background:var(--paper);border:1px solid var(--line);border-radius:4px;
+  padding:3px 9px;font-size:12.5px;color:var(--accent-dark);font-weight:600;margin:0 6px 6px 0}
+
+footer.band{margin-top:20px}
+footer.band .inner{padding-top:30px;padding-bottom:34px;font-size:13.5px;color:#c7d6de}
+footer.band strong{color:#fff;font-weight:600}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+
+<header class="band">
+  <div class="inner">
+    <p class="wordmark">STAPLER STUDIOS</p>
+    <h1>CK Worldwide Correspondence Analysis</h1>
+    <p class="dek">What seven years of email says about demand, friction, and how CK should talk about itself.</p>
+    <ul class="facts">
+      <li>Client: CK Worldwide</li>
+      <li>54,455 messages, three mailboxes</li>
+      <li>September 2019 to July 2026</li>
+      <li>August 2026</li>
+    </ul>
+    <p class="confid">Prepared by Stapler Studios for CK Worldwide. Confidential.</p>
+  </div>
+</header>
+
+<main id="main">
+<div class="inner">
+
+  <section>
+    <p class="eyebrow">Summary</p>
+    <h2>Three quarters of this correspondence is with distributors, not welders</h2>
+    <p class="lede">Three mailboxes totalling 11.5&nbsp;GB were converted into a structured dataset. After removing automated traffic, 5,051 messages are real human correspondence, and 1,812 of those involve someone outside the company. Customer voice was recovered from the 4,687 replies that quote the original message beneath them.</p>
+    <p>This is a channel conversation. The findings below should be read that way.</p>
+
+    <div class="kpis">
+      <div class="kpi"><div class="lbl">Median reply time</div><div class="val">46 min</div><div class="note">54.7% answered inside the hour</div></div>
+      <div class="kpi"><div class="lbl">External conversations</div><div class="val">1,556</div><div class="note">Within the reliable date window</div></div>
+      <div class="kpi"><div class="lbl">Distributor share</div><div class="val">75.4%</div><div class="note">Of all external correspondence</div></div>
+      <div class="kpi"><div class="lbl">Genuine complaints</div><div class="val">86</div><div class="note">4.7% of external messages</div></div>
+      <div class="kpi"><div class="lbl">Genuine compliments</div><div class="val">4</div><div class="note">Across seven years of email</div></div>
+    </div>
+
+    <div class="card lg">
+      <h3>What this data is, and what it is not</h3>
+      <p>These are outbound mailboxes. 97% of messages sit in Sent Items, so the customer side of each exchange exists only where a reply quotes it, which it does 93% of the time. The analysis therefore reads customers through CK's replies rather than directly.</p>
+      <p>Nine months between 2019 and mid&#8209;2022 contain no external messages at all, and another ten contain fewer than five. From June 2022 onward the corpus holds a steady 32 external messages per month. <b>Every trend figure on this page is calculated from June 2022 forward.</b> 2026 is a partial year ending 9 July, so percentages compare across years but counts do not.</p>
+      <p class="muted">Nine of every ten messages in these mailboxes are automated scanner and invoice traffic. Everything below is drawn from the 1,556 real external conversations that remain.</p>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Audience</p>
+    <h2>Who is actually writing</h2>
+    <p>Every external domain was classified individually. The result reframes the question the company asked.</p>
+
+    <div class="grid2">
+      <div class="card">
+        <figure>
+          <h3>Composition of external correspondence</h3>
+          <figcaption>Messages by correspondent type, June 2022 onward.</figcaption>
+          <div id="c-mix"></div>
+        </figure>
+        <details><summary>View data table</summary><div id="t-mix"></div></details>
+      </div>
+
+      <div class="card">
+        <h3>The heaviest correspondents</h3>
+        <figcaption>Ranked by message volume in the reliable window.</figcaption>
+        <div id="t-dom"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <figure>
+        <h3>Distributors and end users ask opposite questions</h3>
+        <figcaption>Share of each audience's messages touching a theme. Distributors n=1,173, end users n=171. Values are labelled directly on each bar.</figcaption>
+        <div class="legend">
+          <span><i style="background:var(--s1)"></i>Distributors</span>
+          <span><i style="background:var(--s2)"></i>End users</span>
+        </div>
+        <div id="c-aud"></div>
+      </figure>
+      <details><summary>View data table</summary><div id="t-aud"></div></details>
+    </div>
+
+    <div class="grid2">
+      <div class="card">
+        <h3>Distributors are running transactions</h3>
+        <p>Nearly half their mail is price and availability. Another 42% chases a shipment. This is procurement friction, and almost all of it is automatable.</p>
+      </div>
+      <div class="card">
+        <h3>End users are deciding what to buy</h3>
+        <p>Their top three subjects are fitment, technical support, and warranty. They are not price shopping. They want to know whether a CK torch will work on their machine.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Demand signal</p>
+    <h2>What everyone writes about</h2>
+    <div class="card lg">
+      <figure>
+        <figcaption>Share of the 1,556 external messages touching each theme. Messages can touch more than one theme, so shares total more than 100%.</figcaption>
+        <div id="c-themes"></div>
+      </figure>
+      <details><summary>View data table</summary><div id="t-themes"></div></details>
+    </div>
+
+    <div class="card">
+      <figure>
+        <h3>Which products come up</h3>
+        <figcaption>Product family mentions across external correspondence.</figcaption>
+        <div id="c-fam"></div>
+      </figure>
+      <details><summary>View data table</summary><div id="t-fam"></div></details>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Trends</p>
+    <h2>Three themes that moved</h2>
+    <p>Compliance and warranty are measured inside distributor mail only, so the movement is not an artefact of a changing mix of correspondents. Backorder covers all external mail.</p>
+
+    <div class="card lg">
+      <figure>
+        <div class="legend" id="l-trend"></div>
+        <div id="c-trend"></div>
+        <figcaption style="margin:12px 0 0">Each line is labelled with its 2026 value. 2026 covers January to 9 July.</figcaption>
+      </figure>
+      <details><summary>View data table</summary><div id="t-trend"></div></details>
+    </div>
+
+    <div class="grid2">
+      <div class="card">
+        <h3>Compliance paperwork has tripled</h3>
+        <p>Distributors increasingly need safety data sheets, mill and tungsten certificates, country of origin declarations, RoHS and REACH statements, and Prop 65 language, often to satisfy their own customers' audits. Nearly one in five distributor emails now involves retrieving a document by hand.</p>
+      </div>
+      <div class="card">
+        <h3>Warranty mentions rose more than tenfold</h3>
+        <p>From 0.9% of distributor messages in 2022 to 11.7% in 2025. The reported failures concentrate on two components: cracked flex heads, and Superflex cable or hose that leaks or has been spliced. Both recur across unrelated customers over multiple years.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Supply pressure eased, then began returning</h3>
+      <p>A third of all correspondence in 2022 touched backorders. That fell to 5.9% in 2025, a genuine operational win worth telling distributors about. It has since more than doubled in the first half of 2026. This is an early signal rather than an established trend, and it is the metric to watch.</p>
+    </div>
+
+    <div class="card">
+      <figure>
+        <h3>External conversation volume by month</h3>
+        <figcaption>Steady capture from June 2022 onward, which is the window all trend figures use.</figcaption>
+        <div id="c-vol"></div>
+      </figure>
+      <details><summary>View data table</summary><div id="t-vol"></div></details>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Service performance</p>
+    <h2>Response time is the strongest asset in the dataset</h2>
+    <p>Reply latency was measured on 1,768 external messages by comparing each outgoing message against the customer timestamp quoted inside it. Coverage is 97.6%, so these figures are not a favourable subset.</p>
+
+    <div class="grid2">
+      <div class="card">
+        <figure>
+          <h3>How fast CK replies</h3>
+          <figcaption>Distribution of measured reply times.</figcaption>
+          <div id="c-lat"></div>
+        </figure>
+        <details><summary>View data table</summary><div id="t-lat"></div></details>
+      </div>
+      <div class="card">
+        <figure>
+          <h3>Median reply time by year</h3>
+          <figcaption>2020 reflects the promotional backlog described below. The median has held between 26 and 54 minutes every year since 2021.</figcaption>
+          <div id="c-laty"></div>
+        </figure>
+        <details><summary>View data table</summary><div id="t-laty"></div></details>
+      </div>
+    </div>
+
+    <div class="card lg">
+      <h3>The claim CK already makes is true</h3>
+      <p>CK's email signature has for years read "Our Commitment to you, the best customer support in the industry." The data supports it. Very few industrial suppliers answer a distributor in under an hour, more than half the time, for five consecutive years. The one exception in the record, 2020, is instructive: during the promotional backlog the median stretched to seven hours.</p>
+      <p>At present that claim sits in a signature block where only existing customers see it, and it carries no number.</p>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Friction</p>
+    <h2>What customers complain about</h2>
+    <p>Every message containing any hint of dissatisfaction was pulled and classified individually. 86 are genuine complaints, 28 are product issues reported without frustration, and the rest are routine transactions or inbound sales noise. Complaints represent 4.7% of external correspondence. A low complaint rate in a channel business often means the end user's dissatisfaction never reaches the manufacturer.</p>
+
+    <div class="card lg">
+      <figure>
+        <figcaption>Recurring issues across complaints and reported product problems.</figcaption>
+        <div id="c-ct"></div>
+      </figure>
+      <details><summary>View data table</summary><div id="t-ct"></div></details>
+    </div>
+
+    <div class="grid2">
+      <div class="card">
+        <h3>The promotion lesson</h3>
+        <p>One 2020 promotional giveaway produced 28 of the 86 complaints in this dataset, a third of all recorded dissatisfaction across seven years. The offer was roughly twelve times oversubscribed and fulfilment ran months behind.</p>
+        <div class="quote"><p>"Any more updates on this item? It's been roughly 10 weeks now and I still haven't received one of these tools."</p><span class="src">Customer, November 2020</span></div>
+        <p>The campaign worked. That was the problem. Demand generation without fulfilment capacity converted enthusiasm into the single largest source of customer frustration on record. Future offers need a quantity cap and a published ship window.</p>
+      </div>
+
+      <div class="card">
+        <h3>The authenticity problem</h3>
+        <p>Amazon is named 27 times, and seven messages raise counterfeit or authenticity concerns. In October 2025 a fifteen year customer wrote:</p>
+        <div class="quote"><p>"About 15 years ago, I bought a Superflex TIG Torch Power Cable. It is an excellent welding cable, very convenient, soft as a rope. Recently I purchased a 57Y01RSF cable on Amazon. The new cable is different from the old one; it is not as soft and has a slightly larger diameter. What happened, did I buy a fake?"</p><span class="src">End user, October 2025</span></div>
+        <p>CK's answer, "This is the same cable and not sure why it's different feel," drew the reply "Excellent technical answer! I'm thrilled!" The customer left believing either that the product had been quietly changed, or that CK could not confirm his purchase was authentic. Both readings damage the brand, and the second will recur.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>What customers praise</h3>
+      <p>Four messages in the entire corpus express genuine, specific satisfaction.</p>
+      <div class="quote"><p>"I use a lot of Jody's videos and also buy CK Worldwide for all my TIG consumables. Very happy with CK quality and service. Keep up the good work."</p><span class="src">End user, November 2020</span></div>
+      <p>The scarcity is the finding. Distributors have little reason to praise a supplier by email, and end users mostly cannot reach CK at all. The company has almost no owned channel through which satisfaction gets expressed, captured, or reused. Given a 46 minute median response time, that is a significant amount of goodwill going unrecorded.</p>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Recommendations</p>
+    <h2>Messaging</h2>
+    <div class="card lg">
+      <ul class="rec">
+        <li><b>Turn response time into a public, numbered promise.</b> "Most questions answered within the hour, median 46 minutes" is specific, true, verifiable, and difficult for a competitor to copy without matching the operation behind it. Move it out of the email signature and onto the site, the line card, and distributor facing material.</li>
+        <li><b>Build the fitment answer once instead of 417 times.</b> A cross reference and compatibility tool covering competitor equivalents, machine to torch fitment, and cable and connector selection addresses the largest single question category and doubles as search visible content that pulls end users in. Every one of these emails is a purchase intent signal answered privately.</li>
+        <li><b>Publish a self serve compliance library.</b> Safety data sheets, mill and tungsten certificates by lot, country of origin, RoHS and REACH, Prop 65 language. The fastest growing category of distributor mail is a document retrieval errand that should not require a person.</li>
+        <li><b>Give end users somewhere to land.</b> Inbound from individual welders is growing quickly and currently receives a redirect. A distributor locator on the contact page, an authorized online seller list, and an authenticity FAQ would convert that traffic instead of deflecting it, without changing the channel model.</li>
+        <li><b>Say the supply story out loud.</b> Backorder mentions fell from a third of all correspondence to under 6%. Distributors who lived through 2022 have not been told this changed. It is a credible, differentiated message for exactly the audience that writes most often.</li>
+        <li><b>Start capturing satisfaction.</b> A single question follow up after a resolved support thread would, at current volumes and response times, generate the review and testimonial material the company presently lacks.</li>
+      </ul>
+    </div>
+
+    <h2>Product and operations</h2>
+    <div class="card lg">
+      <ul class="rec">
+        <li><b>Investigate flex heads and Superflex cable.</b> These two components account for most of the warranty growth. Cracked heads and leaking or spliced hose recur across unrelated customers over multiple years.</li>
+        <li><b>Resolve the cable specification question definitively.</b> Multiple customers report that Superflex cable feels stiffer and measures larger than older stock. Either the specification or the supplier changed, in which case say so, or it did not, in which case the company needs a better answer than the one currently given.</li>
+        <li><b>Send automatic purchase order acknowledgements.</b> Distributors repeatedly report sending orders into silence. This is a recurring complaint with a purely technical fix.</li>
+        <li><b>Cap and schedule promotions.</b> The 2020 giveaway generated a third of all complaints on record. Future offers need a quantity limit and a published ship window.</li>
+        <li><b>Watch the backorder line monthly.</b> The 2026 partial year figure has more than doubled off the 2025 low. Worth monitoring continuously rather than discovering in a year end review.</li>
+        <li><b>Take control of the marketplace listings.</b> Amazon appears in 27 messages and is the setting for the authenticity complaints. An authorized seller page and a scripted response protect both the brand and the distributors who resent competing with it.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Scope</p>
+    <h2>What this analysis cannot tell you</h2>
+    <div class="card lg">
+      <ul class="rec">
+        <li>It cannot measure what customers say when they are not replying to CK. The inbound side of these mailboxes was not provided.</li>
+        <li>It cannot measure end user sentiment at scale. Only 171 messages come from individual welders, and they reach CK only after finding a contact form.</li>
+        <li>It cannot measure anything reliably before June 2022, because nine months in that period contain no external messages at all.</li>
+        <li>It cannot see phone calls, which for a company advertising an 800 number almost certainly carry a large share of the real conversation.</li>
+        <li>Warranty and defect figures reflect what is mentioned in email, not verified failure rates. They indicate where to look, not what is broken.</li>
+      </ul>
+      <p style="margin-top:18px">Exporting the Inbox folders of the same mailboxes, or a full mailbox rather than Sent Items only, would materially change what this analysis can support. Direct customer voice, unfiltered by CK's replies, would allow proper sentiment measurement, complaint resolution tracking, and a view of what customers ask before anyone answers them.</p>
+    </div>
+  </section>
+
+</div>
+</main>
+
+<footer class="band">
+  <div class="inner">
+    <p style="margin:0 0 6px"><strong>Stapler Studios</strong> &middot; staplerstudios.ai</p>
+    <p style="margin:0">Confidential: prepared for CK Worldwide. Stapler Studios analysis, 2026.</p>
+  </div>
+</footer>
+
+<script>
+const D = {"kpi":{"external":1556,"total":53552,"median_min":46.3,"under1h":54.7,"under24h":93.3,"distributor_pct":75.4,"complaints":86,"complaint_pct":4.7,"praise":4,"msgs_all":54455},"themes":[["Price and quote requests",635,40.8],["Shipping and tracking",553,35.5],["Part identification and fitment",417,26.8],["Order and PO status",392,25.2],["Backorder and lead time",329,21.1],["Invoice and billing",274,17.6],["Technical and product support",181,11.6],["Certificates and compliance",148,9.5],["Warranty and defect",123,7.9],["New product and catalog",88,5.7],["Returns, credits and RMA",76,4.9],["Distributor and channel setup",67,4.3]],"aud":[["Price and quote requests",46.0,15.2],["Shipping and tracking",42.2,9.4],["Order and PO status",31.8,2.3],["Part identification and fitment",28.0,27.5],["Backorder and lead time",26.3,2.3],["Technical and product support",9.0,20.5],["Invoice and billing",19.0,8.8],["Warranty and defect",6.4,12.9],["Certificates and compliance",8.3,5.8],["Returns, credits and RMA",5.6,1.2],["New product and catalog",4.8,4.1],["Distributor and channel setup",4.1,2.3]],"trend":{"years":["2022","2023","2024","2025","2026"],"Certs & compliance":[5.7,4.2,8.0,13.0,17.5],"Warranty & defect":[0.9,5.7,6.6,11.7,10.5],"Backorder & lead time":[32.9,25.5,31.0,5.9,13.2]},"fams":[["Flex and rigid heads, Trim-Line",185],["Cables, hoses and Superflex",180],["Tungsten and consumables",166],["Torch bodies",151],["Collets, bodies and cups",95],["Water coolers and cooling",90],["Adapters and connectors",75],["Gas Saver Kits and gas lenses",66],["Torch switches and Amptrak",22],["Filler feeders",5]],"volume":[["2022-06",40],["2022-07",31],["2022-08",47],["2022-09",46],["2022-10",41],["2022-11",30],["2022-12",23],["2023-01",57],["2023-02",36],["2023-03",36],["2023-04",48],["2023-05",38],["2023-06",41],["2023-07",19],["2023-08",45],["2023-09",34],["2023-10",27],["2023-11",32],["2023-12",23],["2024-01",38],["2024-02",33],["2024-03",37],["2024-04",27],["2024-05",20],["2024-06",22],["2024-07",21],["2024-08",14],["2024-09",13],["2024-10",4],["2024-11",5],["2024-12",5],["2025-01",10],["2025-02",6],["2025-03",20],["2025-04",13],["2025-05",15],["2025-06",20],["2025-07",23],["2025-08",37],["2025-09",53],["2025-10",58],["2025-11",26],["2025-12",40],["2026-01",39],["2026-02",41],["2026-03",52],["2026-04",43],["2026-05",35],["2026-06",78],["2026-07",14]],"lat":[["< 1 hr",967],["1\u20134 hrs",400],["4\u201312 hrs",128],["12\u201324 hrs",155],["1\u20133 days",95],["> 3 days",23]],"lat_year":[["2020",422.7],["2021",26.4],["2022",54.2],["2023",43.1],["2024",34.7],["2025",39.0],["2026",48.6]],"ctopics":[["Promotional giveaway never received (2020)",28],["Shortage: missing item",5],["Repeated requests for missing receipt",5],["No order acknowledgment",4],["Wrong part shipped",3],["Shortage: partial shipment",3],["Leaking/spliced torch hose",3],["No response to return/refund request: leaking hose",3],["Missing parts on po",2],["Wrong part shipped / part number mismatch",2]],"audmix":[["distributor",1173],["end user",171],["unclassified",151],["industrial customer",43],["logistics/other",18]],"domains":[["grainger.com",189],["nexair.com",119],["gmail.com",116],["thehaunedge.com",92],["innovairgroup.com",60],["airgas.com",53],["linde.com",43],["sjsmith.com",41],["puritygas.com",40],["scnindustrial.com",39]]};
+const NS='http://www.w3.org/2000/svg';
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');
+const fmt=n=>Number(n).toLocaleString('en-US');
+const mk=(t,a)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);return e;};
+function svgEl(w,h,title,desc){
+  const s=document.createElementNS(NS,'svg');
+  s.setAttribute('viewBox','0 0 '+w+' '+h);
+  s.setAttribute('role','img');
+  s.setAttribute('aria-label',title+'. '+desc);
+  return s;
+}
+function hbarPath(x,y,w,h,r){r=Math.min(r,w);if(w<=0.5)return 'M'+x+' '+y;
+  return `M${x},${y} H${x+w-r} a${r},${r} 0 0 1 ${r},${r} V${y+h-r} a${r},${r} 0 0 1 ${-r},${r} H${x} Z`;}
+function vbarPath(x,y,w,h,r){r=Math.min(r,h);if(h<=0.5)return 'M'+x+' '+y;
+  return `M${x},${y+r} a${r},${r} 0 0 1 ${r},${-r} H${x+w-r} a${r},${r} 0 0 1 ${r},${r} V${y+h} H${x} Z`;}
+
+function hbarChart(host,rows,opt){
+  opt=opt||{};const el=$(host);el.innerHTML='';
+  const labW=opt.labW||250,rowH=opt.rowH||32,W=opt.W||900,H=rows.length*rowH+8,plotW=W-labW-70;
+  const max=Math.max.apply(null,rows.map(r=>r.v));
+  const s=svgEl(W,H,opt.title||'Bar chart','Values are labelled on each bar and repeated in the data table below.');
+  rows.forEach((r,i)=>{
+    const y=i*rowH,bh=rowH-11,w=max?(r.v/max)*plotW:0;
+    const lt=mk('text',{x:labW-14,y:y+bh/2+4.5,'text-anchor':'end','class':'vlabel'});
+    lt.textContent=r.k;s.appendChild(lt);
+    s.appendChild(mk('path',{d:hbarPath(labW,y,w,bh,4),fill:r.c||'var(--s1)'}));
+    const vt=mk('text',{x:labW+w+9,y:y+bh/2+4.5,'class':'slabel',fill:'var(--ink)'});
+    vt.textContent=r.lab;s.appendChild(vt);
+  });
+  el.appendChild(s);
+}
+
+function groupChart(host,rows){
+  const el=$(host);el.innerHTML='';
+  const labW=250,rowH=46,W=900,H=rows.length*rowH+8,plotW=W-labW-70;
+  const max=Math.max.apply(null,rows.reduce((a,r)=>a.concat([r.a,r.b]),[]));
+  const s=svgEl(W,H,'Themes by audience','Two bars per theme, distributors and end users, each labelled with its percentage.');
+  rows.forEach((r,i)=>{
+    const y=i*rowH;
+    const lt=mk('text',{x:labW-14,y:y+20,'text-anchor':'end','class':'vlabel'});
+    lt.textContent=r.k;s.appendChild(lt);
+    [[r.a,'var(--s1)',0],[r.b,'var(--s2)',17]].forEach(function(t){
+      const v=t[0],c=t[1],dy=t[2],w=max?(v/max)*plotW:0;
+      s.appendChild(mk('path',{d:hbarPath(labW,y+dy,w,14,4),fill:c}));
+      const vt=mk('text',{x:labW+w+9,y:y+dy+12,'class':'slabel',fill:'var(--ink)'});
+      vt.textContent=v+'%';s.appendChild(vt);
+    });
+  });
+  el.appendChild(s);
+}
+
+function lineChart(host,years,series,opt){
+  opt=opt||{};const el=$(host);el.innerHTML='';
+  const W=opt.W||900,H=opt.h||320,mL=54,mR=opt.mR||104,mT=16,mB=36;
+  const pw=W-mL-mR,ph=H-mT-mB;
+  const max=opt.max||Math.ceil(Math.max.apply(null,series.reduce((a,s)=>a.concat(s.v),[]))/5)*5;
+  const X=i=>mL+(years.length>1?i*(pw/(years.length-1)):pw/2);
+  const Y=v=>mT+ph-(v/max)*ph;
+  const s=svgEl(W,H,opt.title||'Trend chart','Each series is labelled at its final point and repeated in the data table below.');
+  for(let g=0;g<=4;g++){
+    const v=max*g/4,y=Y(v);
+    s.appendChild(mk('line',{x1:mL,x2:mL+pw,y1:y,y2:y,'class':'gl'}));
+    const t=mk('text',{x:mL-12,y:y+4,'text-anchor':'end','class':'tick'});
+    t.textContent=opt.fmtY?opt.fmtY(v):v+'%';s.appendChild(t);
+  }
+  s.appendChild(mk('line',{x1:mL,x2:mL+pw,y1:mT+ph,y2:mT+ph,'class':'ax'}));
+  years.forEach((yr,i)=>{const t=mk('text',{x:X(i),y:H-12,'text-anchor':'middle','class':'tick'});t.textContent=yr;s.appendChild(t);});
+  series.forEach(se=>{
+    const d=se.v.map((v,i)=>(i?'L':'M')+X(i)+' '+Y(v)).join(' ');
+    s.appendChild(mk('path',{d:d,fill:'none',stroke:se.c,'stroke-width':2,'stroke-linejoin':'round','stroke-linecap':'round'}));
+    se.v.forEach((v,i)=>s.appendChild(mk('circle',{cx:X(i),cy:Y(v),r:4.5,fill:se.c,stroke:'#fff','stroke-width':2})));
+    const last=se.v.length-1;
+    const t=mk('text',{x:X(last)+12,y:Y(se.v[last])+4,'class':'slabel',fill:'var(--ink)'});
+    t.textContent=opt.fmtY?opt.fmtY(se.v[last]):se.v[last]+'%';s.appendChild(t);
+  });
+  el.appendChild(s);
+}
+
+function colChart(host,rows,opt){
+  opt=opt||{};const el=$(host);el.innerHTML='';
+  const W=900,H=opt.h||240,mL=46,mR=14,mT=14,mB=40;
+  const pw=W-mL-mR,ph=H-mT-mB;
+  const max=Math.ceil(Math.max.apply(null,rows.map(r=>r.v))/10)*10,bw=pw/rows.length;
+  const s=svgEl(W,H,'Monthly external message volume','Monthly counts, repeated in the data table below.');
+  for(let g=0;g<=3;g++){const v=max*g/3,y=mT+ph-(v/max)*ph;
+    s.appendChild(mk('line',{x1:mL,x2:mL+pw,y1:y,y2:y,'class':'gl'}));
+    const t=mk('text',{x:mL-10,y:y+4,'text-anchor':'end','class':'tick'});t.textContent=Math.round(v);s.appendChild(t);}
+  s.appendChild(mk('line',{x1:mL,x2:mL+pw,y1:mT+ph,y2:mT+ph,'class':'ax'}));
+  rows.forEach((r,i)=>{
+    const h=(r.v/max)*ph,x=mL+i*bw;
+    s.appendChild(mk('path',{d:vbarPath(x+1,mT+ph-h,bw-2,h,3),fill:'var(--s1)'}));
+    if(r.k.slice(5)==='01'){const t=mk('text',{x:x+bw/2,y:H-12,'text-anchor':'middle','class':'tick'});t.textContent=r.k.slice(0,4);s.appendChild(t);}
+  });
+  el.appendChild(s);
+}
+
+function tableView(host,cols,rows,caption){
+  $(host).innerHTML='<table>'+(caption?'<caption>'+esc(caption)+'</caption>':'')+
+    '<thead><tr>'+cols.map(c=>'<th scope="col">'+esc(c)+'</th>').join('')+'</tr></thead><tbody>'+
+    rows.map(r=>'<tr>'+r.map((c,i)=>i?'<td>'+esc(c)+'</td>':'<th scope="row" style="font-weight:400;background:none;color:inherit">'+esc(c)+'</th>').join('')+'</tr>').join('')+
+    '</tbody></table>';
+}
+
+/* ---- render ---- */
+const mixNames={'distributor':'Distributors and resellers','end user':'End users','unclassified':'Long tail businesses','industrial customer':'Industrial customers','logistics/other':'Logistics, brokers, reps'};
+const mixTot=D.audmix.reduce((a,b)=>a+b[1],0);
+hbarChart('#c-mix',D.audmix.map(m=>({k:mixNames[m[0]]||m[0],v:m[1],lab:fmt(m[1])})),{W:520,labW:190,rowH:34,title:'Composition of external correspondence'});
+tableView('#t-mix',['Audience','Messages','Share'],D.audmix.map(m=>[mixNames[m[0]]||m[0],fmt(m[1]),(100*m[1]/mixTot).toFixed(1)+'%']));
+tableView('#t-dom',['Correspondent','Messages'],D.domains.map(d=>[d[0],fmt(d[1])]));
+
+groupChart('#c-aud',D.aud.filter(r=>Math.max(r[1],r[2])>=8).map(r=>({k:r[0],a:r[1],b:r[2]})));
+tableView('#t-aud',['Theme','Distributors','End users'],D.aud.map(r=>[r[0],r[1]+'%',r[2]+'%']));
+
+hbarChart('#c-themes',D.themes.map(t=>({k:t[0],v:t[2],lab:t[2]+'%'})),{rowH:33,labW:260,title:'External correspondence themes'});
+tableView('#t-themes',['Theme','Messages','Share'],D.themes.map(t=>[t[0],fmt(t[1]),t[2]+'%']));
+
+hbarChart('#c-fam',D.fams.map(f=>({k:f[0],v:f[1],lab:fmt(f[1])})),{labW:280,rowH:31,title:'Product family mentions'});
+tableView('#t-fam',['Product family','Mentions'],D.fams.map(f=>[f[0],fmt(f[1])]));
+
+const tS=[{k:'Certificates and compliance (distributors)',v:D.trend['Certs & compliance'],c:'#0e7c86'},
+          {k:'Warranty and defect (distributors)',v:D.trend['Warranty & defect'],c:'#c1571f'},
+          {k:'Backorder and lead time (all external)',v:D.trend['Backorder & lead time'],c:'#4a3aa7'}];
+$('#l-trend').innerHTML=tS.map(s=>'<span><i style="background:'+s.c+'"></i>'+esc(s.k)+'</span>').join('');
+lineChart('#c-trend',D.trend.years,tS,{h:320,title:'Theme share by year'});
+tableView('#t-trend',['Theme'].concat(D.trend.years),tS.map(s=>[s.k].concat(s.v.map(v=>v+'%'))));
+
+colChart('#c-vol',D.volume.map(v=>({k:v[0],v:v[1]})),{h:240});
+tableView('#t-vol',['Month','External messages'],D.volume);
+
+const latTot=D.lat.reduce((a,b)=>a+b[1],0);
+hbarChart('#c-lat',D.lat.map(l=>({k:l[0],v:l[1],lab:fmt(l[1])})),{W:520,labW:106,rowH:34,title:'Reply time distribution'});
+tableView('#t-lat',['Time to reply','Messages','Share'],D.lat.map(l=>[l[0],fmt(l[1]),(100*l[1]/latTot).toFixed(1)+'%']));
+
+lineChart('#c-laty',D.lat_year.map(l=>l[0]),[{k:'Median reply',v:D.lat_year.map(l=>l[1]),c:'#0e7c86'}],
+  {W:520,mR:66,h:250,max:Math.ceil(Math.max.apply(null,D.lat_year.map(l=>l[1]))/60)*60,fmtY:v=>Math.round(v)+'m',title:'Median reply time by year'});
+tableView('#t-laty',['Year','Median reply (minutes)'],D.lat_year.map(l=>[l[0],l[1]]));
+
+hbarChart('#c-ct',D.ctopics.map(c=>({k:c[0],v:c[1],lab:fmt(c[1])})),{labW:300,rowH:31,title:'Recurring complaint topics'});
+tableView('#t-ct',['Issue','Instances'],D.ctopics.map(c=>[c[0],fmt(c[1])]));
+</script>
+</body>
+</html>
